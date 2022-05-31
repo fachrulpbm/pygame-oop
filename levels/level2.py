@@ -1,0 +1,26 @@
+import pygame
+from enemies.scorpion import Scorpion
+from level import Level
+from levels.castle.castle1 import Castle
+from enemies.mouse import Mouse
+
+
+class Level2(Level):
+    ''' Level 1 - berlatar belakang rerumputan '''
+
+    def setup(self):
+        self.castle = Castle(self.screen)
+        self.enemy = [Mouse, Scorpion]
+        self.sprites = self.get_sprites()
+
+    def background_sound(self, volume=0.25):
+        pygame.mixer.init()
+        pygame.mixer.music.load("resources/audio/moonlight.wav")
+        pygame.mixer.music.play(-1, 0.0)
+        pygame.mixer.music.set_volume(volume)
+
+    def tiles(self):
+        return self.sprites
+    
+    def get_sprites(self):
+        return pygame.image.load('resources/images/pasir.jpg')
